@@ -68,7 +68,7 @@
         '()
 
         (atom? (first l))
-        (cond (= old (first l))
+        (cond (= (first l) old)
               (cons new (cons old (insertL* new old (rest l))))
 
               :else
@@ -77,3 +77,78 @@
         :else
         (cons (insertL* new old (first l))
               (insertL* new old (rest l)))))
+
+(defn member* [a l]
+  (cond (empty? l)
+        false
+
+        (atom? (first l))
+        (cond (= (first l) a)
+              true
+
+              :else
+              (member* a (rest l)))
+
+        :else
+        (or (member* a (first l))
+            (member* a (rest l)))))
+
+(defn leftmost [l]
+  (cond (atom? (first l))
+        (first l)
+
+        :else
+        (recur (first l))))
+
+(defn eqlist? [l1 l2]
+  (cond (and (empty? l1) (empty? l2))
+        true
+
+        (or (empty? l1) (empty? l2))
+        false
+
+        (and (atom? (first l1)) (atom? (first l2)))
+        (and (= (first l1) (first l2))
+             (eqlist? (rest l1) (rest l2)))
+
+        (or (atom? (first l1)) (atom? (first l2)))
+        false
+
+        :else
+        (and (eqlist? (first l1) (first l2))
+            (eqlist? (rest l1) (rest l2)))))
+
+;; forward declaration cause equal is written using eqlist2? and vice
+;; versa. This is brillant! Defining function which depend on each other
+(declare equal eqlist2?)
+
+(defn equal? [s1 s2]
+  (cond (and (atom? s1) (atom? s2))
+        (= s1 s2)
+
+        (or (atom? s1) (atom? s2))
+        false
+
+        :else
+        (eqlist2? s1 s2)))
+
+(defn eqlist2? [l1 l2]
+  (cond (and (empty? l1) (empty? l2))
+        true
+
+        (or (empty? l1) (empty? l2))
+        false
+
+        :else
+        (and (equal? (first l1) (first l2))
+             (eqlist2? (rest l1) (rest l2)))))
+
+(defn rember2 [a l]
+  (cond (empty? l)
+        '()
+
+        (equal? (first l) a)
+        (rest l)
+
+        :else
+        (cons (first l) (rember2 a (rest l)))))
