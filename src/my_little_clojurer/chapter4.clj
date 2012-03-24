@@ -47,7 +47,7 @@
         (cons (plus (first tup1) (first tup2))
               (tup+ (rest tup1) (rest tup2)))))
 
-(defn > [n m]
+(defn my-> [n m]
   (cond (= n m)
         false
         
@@ -60,7 +60,7 @@
         :else
         (recur (sub1 n) (sub1 m))))
 
-(defn < [n m]
+(defn my-< [n m]
   (cond (= n m)
         false
         
@@ -84,7 +84,7 @@
         (multiply n (power n (sub1 m)))))
 
 (defn division [n m]
-  (cond (< n m)
+  (cond (my-< n m)
         0
 
         :else
