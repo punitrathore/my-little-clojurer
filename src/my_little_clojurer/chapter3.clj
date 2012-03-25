@@ -1,6 +1,6 @@
-(ns my_little_clojurer.chapter3
-  (:use (my_little_clojurer chapter1)
-        (my_little_clojurer chapter2)))
+(ns my-little-clojurer.chapter3
+  (:use (my-little-clojurer chapter1)
+        (my-little-clojurer chapter2)))
 
 
 (defn rember [a lat]

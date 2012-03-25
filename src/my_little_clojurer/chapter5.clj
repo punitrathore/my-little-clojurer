@@ -1,8 +1,8 @@
-(ns my_little_clojurer.chapter5
-  (:use (my_little_clojurer chapter1)
-        (my_little_clojurer chapter2)
-        (my_little_clojurer chapter3)
-        (my_little_clojurer chapter4)))
+(ns my-little-clojurer.chapter5
+  (:use (my-little-clojurer chapter1)
+        (my-little-clojurer chapter2)
+        (my-little-clojurer chapter3)
+        (my-little-clojurer chapter4)))
 
 
 (defn rember* [a l]

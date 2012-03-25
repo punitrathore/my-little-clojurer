@@ -1,6 +1,6 @@
-(ns my_little_clojurer.chapter4
-  (:use (my_little_clojurer chapter1)
-        (my_little_clojurer chapter2)))
+(ns my-little-clojurer.chapter4
+  (:use (my-little-clojurer chapter1)
+        (my-little-clojurer chapter2)))
 
 (defn add1 [n]
   (+ 1 n))

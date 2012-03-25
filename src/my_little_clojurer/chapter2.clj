@@ -1,5 +1,5 @@
-(ns my_little_clojurer.chapter2
-  (:use (my_little_clojurer chapter1)))
+(ns my-little-clojurer.chapter2
+  (:use (my-little-clojurer chapter1)))
 
 (defn lat? [l]
   (cond (empty? l)
